@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nishka Patel — aspiring DevOps and Cloud Engineer portfolio featuring hands-on Linux, AWS, Nginx, Ansible, and automation projects.">
+  <title>Nishka Patel | DevOps & Cloud Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: light-dark(#f5f7fb, #0b1020);
+      --surface: light-dark(#ffffff, #11182b);
+      --surface-soft: light-dark(#edf2fb, #151f36);
+      --text: light-dark(#182238, #edf3ff);
+      --muted: light-dark(#5c6880, #a4b0c8);
+      --line: light-dark(#dce3ef, #29344d);
+      --accent: light-dark(#235ce8, #83a7ff);
+      --accent-strong: light-dark(#1948bf, #b5caff);
+      --green: light-dark(#087f5b, #6fe0b5);
+      --shadow: 0 18px 48px rgba(14, 27, 57, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .site-root { min-height: 100vh; width: 100%; background: var(--bg); }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.08rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: .91rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--accent); }
+    .menu-button { display: none; background: var(--surface); border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 8px 12px; font: inherit; }
+    .hero { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 44px; padding: 88px 0 74px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--muted); font-size: .83rem; background: var(--surface); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 16%, transparent); }
+    h1 { font-size: clamp(2.8rem, 6vw, 5.15rem); line-height: 1.02; letter-spacing: -.065em; margin: 22px 0 20px; }
+    h1 .accent { color: var(--accent); }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 11px 17px; border-radius: 12px; font-weight: 700; font-size: .93rem; border: 1px solid var(--line); transition: transform .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: white; }
+    .button.primary:hover { background: var(--accent-strong); }
+    .terminal-card { background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 20px; overflow: hidden; transform: rotate(1deg); }
+    .terminal-head { display: flex; gap: 6px; padding: 15px 17px; border-bottom: 1px solid var(--line); background: var(--surface-soft); }
+    .terminal-head i { display: block; width: 9px; height: 9px; border-radius: 50%; background: var(--muted); opacity: .7; }
+    .terminal-body { padding: 23px; font: .87rem/1.95 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .terminal-body .prompt { color: var(--green); }
+    .terminal-body .cmd { color: var(--accent); }
+    .terminal-body .comment { color: var(--muted); }
+    .terminal-body .cursor { display: inline-block; width: 8px; height: 16px; background: var(--accent); vertical-align: -3px; animation: blink 1.1s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    section { padding: 66px 0; scroll-margin-top: 78px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .kicker { text-transform: uppercase; color: var(--accent); letter-spacing: .14em; font-size: .76rem; font-weight: 800; }
+    h2 { margin: 7px 0 0; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: -.045em; }
+    .section-intro { color: var(--muted); max-width: 520px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 25px; }
+    .panel p { margin: 0 0 13px; color: var(--muted); }
+    .panel p:last-child { margin-bottom: 0; }
+    .quick-facts { display: grid; gap: 14px; }
+    .fact { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border: 0; padding-bottom: 0; }
+    .fact span { color: var(--muted); }
+    .fact strong { text-align: right; font-size: .92rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 21px; }
+    .skill-icon { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 11px; background: var(--surface-soft); color: var(--accent); font-weight: 900; margin-bottom: 15px; }
+    h3 { font-size: 1.05rem; margin: 0 0 12px; letter-spacing: -.02em; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--line); border-radius: 7px; padding: 4px 8px; font-size: .77rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+    .project { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; min-height: 260px; transition: transform .18s ease, box-shadow .18s ease; }
+    .project:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .project-label { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .project p { color: var(--muted); margin: 0 0 19px; }
+    .project .tags { margin-top: auto; }
+    .project-link { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font-weight: 700; margin-top: 20px; font-size: .9rem; }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { display: grid; grid-template-columns: 14px 1fr; gap: 16px; }
+    .timeline-mark { display: flex; flex-direction: column; align-items: center; }
+    .timeline-mark::before { content: ""; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); margin-top: 7px; }
+    .timeline-mark::after { content: ""; width: 1px; flex: 1; background: var(--line); margin-top: 8px; }
+    .timeline-item:last-child .timeline-mark::after { display: none; }
+    .timeline-content { padding: 0 0 19px; }
+    .timeline-content p { color: var(--muted); margin: 8px 0 0; }
+    .timeline-meta { color: var(--muted); font-size: .86rem; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 34px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
+    .contact-panel p { color: var(--muted); max-width: 590px; margin: 10px 0 0; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .small-links { display: flex; gap: 18px; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding: 65px 0 50px; gap: 30px; }
+      .terminal-card { max-width: 520px; transform: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: start; flex-direction: column; }
+      .contact-panel { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1100px); }
+      .nav { min-height: 64px; }
+      .menu-button { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 16px 20px 20px; background: var(--surface); border-bottom: 1px solid var(--line); flex-direction: column; align-items: start; gap: 15px; }
+      .nav-links.open { display: flex; }
+      .hero { padding-top: 48px; }
+      h1 { font-size: clamp(2.7rem, 14vw, 4rem); }
+      section { padding: 48px 0; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .panel, .skill-card, .project { padding: 20px; }
+      .contact-panel { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="site-root">
+    <header class="topbar">
+      <nav class="nav wrap" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Nishka Patel home">nishka<span>.</span></a>
+        <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menu</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero wrap" id="home">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> DevOps &amp; Cloud Engineering · Early Career</div>
+          <h1>Hi, I'm Nishka.<br><span class="accent">I build and automate</span> infrastructure.</h1>
+          <p class="hero-copy">Aspiring DevOps and Cloud Engineer focused on Linux administration, AWS, web server configuration, and automation. I enjoy learning by building, troubleshooting, and documenting practical projects.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Explore projects <span aria-hidden="true">↘</span></a>
+            <a class="button" href="https://github.com/patelnishka" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+          </div>
+        </div>
+        <div class="terminal-card" aria-label="Terminal illustration showing infrastructure commands">
+          <div class="terminal-head"><i></i><i></i><i></i></div>
+          <div class="terminal-body">
+            <div><span class="prompt">nishka@devops</span>:~$ <span class="cmd">whoami</span></div>
+            <div>cloud &amp; automation learner</div>
+            <br>
+            <div><span class="prompt">nishka@devops</span>:~$ <span class="cmd">focus --on</span></div>
+            <div>linux · aws · nginx · ansible</div>
+            <br>
+            <div><span class="comment"># build. automate. improve.</span></div>
+            <div><span class="prompt">nishka@devops</span>:~$ <span class="cursor"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head"><div><div class="kicker">A little about me</div><h2>Learning by doing.</h2></div><p class="section-intro">I’m building a strong foundation in cloud infrastructure and DevOps through hands-on labs, projects, and continuous practice.</p></div>
+          <div class="about-grid">
+            <div class="panel">
+              <p>I have worked with Linux, AWS services, Nginx, SSH, and Ansible, and I’m continuing to develop my skills in containers, CI/CD, and monitoring.</p>
+              <p>My approach is practical: configure a service, test it, troubleshoot what breaks, and document what I learned. I’m looking for an entry-level opportunity where I can contribute, learn from a team, and grow as an engineer.</p>
+            </div>
+            <div class="panel quick-facts" aria-label="Profile details">
+              <div class="fact"><span>Location</span><strong>Ahmedabad, Gujarat</strong></div>
+              <div class="fact"><span>Education</span><strong>BCA (Honors), Semester 7</strong></div>
+              <div class="fact"><span>Certification</span><strong>AWS Certified Cloud Practitioner</strong></div>
+              <div class="fact"><span>Looking for</span><strong>Paid DevOps / Cloud roles</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="wrap">
+          <div class="section-head"><div><div class="kicker">Technical toolkit</div><h2>Skills I'm building on.</h2></div><p class="section-intro">A snapshot of the technologies I’ve studied or used in labs and projects. Practical depth continues to grow.</p></div>
+          <div class="skills-grid">
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">⌘</div><h3>Linux &amp; Scripting</h3><div class="tags"><span class="tag">Ubuntu</span><span class="tag">Shell basics</span><span class="tag">SSH</span><span class="tag">Cron</span><span class="tag">Permissions</span></div></article>
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">☁</div><h3>AWS &amp; Cloud</h3><div class="tags"><span class="tag">EC2</span><span class="tag">S3</span><span class="tag">IAM</span><span class="tag">VPC</span><span class="tag">Security Groups</span><span class="tag">AWS CLI</span></div></article>
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">↔</div><h3>Web &amp; Networking</h3><div class="tags"><span class="tag">Nginx</span><span class="tag">Apache</span><span class="tag">Reverse Proxy</span><span class="tag">HTTP / HTTPS</span><span class="tag">TLS basics</span></div></article>
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">⚙</div><h3>Automation &amp; CI/CD</h3><div class="tags"><span class="tag">Ansible</span><span class="tag">YAML</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jenkins fundamentals</span></div></article>
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">▣</div><h3>Containers &amp; Monitoring</h3><div class="tags"><span class="tag">Docker fundamentals</span><span class="tag">Kubernetes fundamentals</span><span class="tag">Prometheus basics</span><span class="tag">Grafana basics</span></div></article>
+            <article class="skill-card"><div class="skill-icon" aria-hidden="true">⌘</div><h3>Other Tools</h3><div class="tags"><span class="tag">KVM</span><span class="tag">Virtual Machines</span><span class="tag">MySQL basics</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript basics</span></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="wrap">
+          <div class="section-head"><div><div class="kicker">Selected work</div><h2>Projects &amp; practice.</h2></div><p class="section-intro">Hands-on work focused on hosting, backups, and configuration. Open the repositories to review the implementation and documentation.</p></div>
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-top"><span class="project-label">AWS · Web Hosting</span><span aria-hidden="true">↗</span></div>
+              <h3>AWS EC2 Web Server</h3>
+              <p>Practice project for provisioning an EC2 instance and hosting a website using a web server. Includes core cloud and server configuration concepts.</p>
+              <div class="tags"><span class="tag">AWS EC2</span><span class="tag">Nginx / Apache</span><span class="tag">Linux</span></div>
+              <a class="project-link" href="https://github.com/patelnishka/aws-ec2-web-server-project" target="_blank" rel="noreferrer">View repository ↗</a>
+            </article>
+            <article class="project">
+              <div class="project-top"><span class="project-label">AWS · Automation</span><span aria-hidden="true">↗</span></div>
+              <h3>S3 Backup Automation</h3>
+              <p>A backup workflow using Bash, AWS CLI, S3, and cron to practice repeatable file backups and scheduled automation.</p>
+              <div class="tags"><span class="tag">Bash</span><span class="tag">AWS S3</span><span class="tag">AWS CLI</span><span class="tag">Cron</span></div>
+              <a class="project-link" href="https://github.com/patelnishka/aws-s3-backup-system" target="_blank" rel="noreferrer">View repository ↗</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="wrap">
+          <div class="section-head"><div><div class="kicker">Experience &amp; education</div><h2>My journey so far.</h2></div></div>
+          <div class="panel timeline">
+            <div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-content"><h3>DevOps Intern · RoboDynamics India LLP</h3><div class="timeline-meta">Aug 2026 – Present · Remote</div><p>Hands-on practice with Nginx web server configuration, reverse proxy concepts, request limiting and headers, Ansible playbooks, KVM virtual machines, and SSH administration.</p></div></div>
+            <div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-content"><h3>BCA (Honors)</h3><div class="timeline-meta">Semester 7 · Ahmedabad, Gujarat</div><p>Building a foundation in computing while developing practical cloud and DevOps skills through labs and projects.</p></div></div>
+            <div class="timeline-item"><div class="timeline-mark"></div><div class="timeline-content"><h3>AWS Certified Cloud Practitioner</h3><div class="timeline-meta">AWS · CLF-C02</div><p>Foundational understanding of AWS cloud concepts, core services, security, and billing.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <div class="contact-panel">
+            <div><div class="kicker">Let's connect</div><h2>Open to the right opportunity.</h2><p>I’m interested in paid entry-level DevOps, Cloud Support, and Linux / Infrastructure roles where I can learn, contribute, and strengthen my practical skills.</p></div>
+            <div class="hero-actions"><a class="button primary" href="https://github.com/patelnishka" target="_blank" rel="noreferrer">Visit GitHub ↗</a><a class="button" href="https://www.linkedin.com/in/nishka-patel-3706682a3/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Nishka Patel</span><div class="small-links"><a href="#home">Back to top ↑</a><a href="https://github.com/patelnishka" target="_blank" rel="noreferrer">GitHub</a></div></div></footer>
+  </div>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
